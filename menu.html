@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiny Cup | เมนู</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style/menu.css" />
+    <link
+      rel="shortcut icon"
+      href="img/tinycup_icon1.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="/img/tinycup_logo.png" alt="tinycupLogo" />
+        </a>
+      </div>
+
+      <!-- แฮมเบอร์เกอร์ -->
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li class="first">
+            <a href="menu.html">เมนู</a>
+            <ul class="drop">
+              <li><a href="#coffee">กาแฟ</a></li>
+              <li><a href="#tea">ชา</a></li>
+              <li class="second">
+                <a href="#">ของทานเล่น</a>
+                <ul class="down">
+                  <li><a href="#bakery">เบเกอรี่</a></li>
+                  <li><a href="#dessert">ของหวาน</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="about.html">เกี่ยวกับเรา</a></li>
+          <li><a href="contact.html">ติดต่อเรา</a></li>
+          <li>
+            <a href="basket.html">
+              <img src="/img/basket-2.png" alt="ตะกร้า" />
+            </a>
+          </li>
+          <li>
+            <a href="favourite.html">
+              <img src="/img/heart.png" alt="รายการโปรด" />
+            </a>
+          </li>
+          <li>
+            <a href="account.html">
+              <img src="/img/account-2.png" alt="โปรไฟล์" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Section -->
+    <section class="main">
+      <!-- Header -->
+      <div class="menu-header">
+        <h3>เมนู</h3>
+        <div class="find">
+          <input type="search" placeholder="ค้นหา" />
+          <img src="img/search-2.png" alt="search" class="icon" />
+        </div>
+      </div>
+
+      <!-- Ads Slider -->
+      <div class="ads_poster">
+        <div class="slider">
+          <div class="slides">
+            <img src="img/Ads_1.jpg" alt="ads1" />
+            <img src="img/Ads_2.jpg" alt="ads2" />
+            <img src="img/Ads_3.jpg" alt="ads3" />
+          </div>
+        </div>
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // --- 1. การตั้งค่าตัวแปร ---
+          let currentIndex = 0;
+          const slidesContainer = document.querySelector(".slides");
+          const allSlides = document.querySelectorAll(".slides img");
+          const totalSlides = allSlides.length;
+          let autoPlayInterval;
+
+          // --- 2. ตั้งค่า Slider อัตโนมัติ (Dynamic Setup) ---
+          // ทำให้โค้ดนี้ทำงานได้แม้คุณจะเพิ่ม/ลบรูปภาพในอนาคต
+          if (totalSlides > 0) {
+            // คำนวณความกว้างของ container ให้พอดีกับจำนวนรูป
+            slidesContainer.style.width = `${totalSlides * 100}%`;
+            // กำหนดความกว้างของแต่ละรูปให้ถูกต้อง
+            allSlides.forEach((img) => {
+              img.style.width = `${100 / totalSlides}%`;
+            });
+          }
+
+          // --- 3. ฟังก์ชันแสดงสไลด์ ---
+          function showSlide(index) {
+            // วนลูปสไลด์: ถ้าไปจนสุดให้กลับมาสไลด์แรก, ถ้าย้อนจนสุดให้ไปสไลด์สุดท้าย
+            if (index >= totalSlides) {
+              currentIndex = 0;
+            } else if (index < 0) {
+              currentIndex = totalSlides - 1;
+            } else {
+              currentIndex = index;
+            }
+            // คำนวณตำแหน่งที่จะเลื่อนไป
+            const offset = -currentIndex * (100 / totalSlides);
+            slidesContainer.style.transform = `translateX(${offset}%)`;
+          }
+
+          // --- 4. การควบคุมด้วยปุ่ม Next/Prev ---
+          document.querySelector(".next").addEventListener("click", () => {
+            showSlide(currentIndex + 1);
+          });
+
+          document.querySelector(".prev").addEventListener("click", () => {
+            showSlide(currentIndex - 1);
+          });
+
+          // --- 5. ฟีเจอร์เสริม: เลื่อนอัตโนมัติ และหยุดเมื่อเมาส์ชี้ ---
+          const sliderWrapper = document.querySelector(".ads_poster");
+
+          function startAutoPlay() {
+            // ตั้งเวลาให้เลื่อนสไลด์ถัดไปทุกๆ 4 วินาที (4000ms)
+            autoPlayInterval = setInterval(() => {
+              showSlide(currentIndex + 1);
+            }, 4000);
+          }
+
+          function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+          }
+
+          // เมื่อเมาส์อยู่บน Slider ให้หยุดเลื่อน
+          sliderWrapper.addEventListener("mouseover", stopAutoPlay);
+          // เมื่อเมาส์ออกจาก Slider ให้เริ่มเลื่อนต่อ
+          sliderWrapper.addEventListener("mouseout", startAutoPlay);
+
+          // เริ่มการเลื่อนอัตโนมัติครั้งแรก
+          startAutoPlay();
+        });
+      </script>
+
+      <!-- Sidebar -->
+      <aside>
+        <label>ทั้งหมด</label>
+        <div class="line"></div>
+        <div class="aside_sub">
+          <label><input type="checkbox" /> กาแฟ</label><br />
+          <label><input type="checkbox" /> ชา</label><br />
+          <label><input type="checkbox" /> เบเกอรี่</label><br />
+          <label><input type="checkbox" /> ของหวาน</label><br />
+        </div>
+      </aside>
+
+      <!-- Coffee Menu Section -->
+      <div id="coffee" class="container my-5">
+        <div class="text-center mb-4">
+          <hr class="mx-auto" style="width: 80px; border: 2px solid #ad8b73" />
+          <h2 class="fw-bold text-brown">กาแฟ</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <!-- 🔸 Card 1 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <a href="/menu_details.html"
+                ><img
+                  src="/img/menu/americano.png"
+                  class="card-img-top mx-auto"
+                  alt="americano"
+                  style="width: 120px"
+              /></a>
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Americano</h5>
+                <p class="card-text small text-muted">
+                  กาแฟดำสุดคลาสสิก เข้มข้น หอมกลิ่นคั่วสด<br />
+                  สดชื่นโดยไม่ต้องเติมนมหรือน้ำตาล<br />
+                  เสิร์ฟ: ร้อน / เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿55.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 2 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/latte.png"
+                class="card-img-top mx-auto"
+                alt="latte"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Latte</h5>
+                <p class="card-text small text-muted">
+                  กาแฟผสมนมสดรสละมุน หอมกลิ่นครีมและนมเข้มข้น<br />
+                  ดื่มง่ายทุกเวลา<br />
+                  เสิร์ฟ: ร้อน / เย็น / ปั่น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿60.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 3 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/espresso.png"
+                class="card-img-top mx-auto"
+                alt="espresso"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Espresso</h5>
+                <p class="card-text small text-muted">
+                  ช็อตกาแฟเข้มข้น กลิ่นหอมโดดเด่น<br />
+                  เหมาะกับคนชอบรสเข้มเป็นพิเศษ<br />
+                  เสิร์ฟ: ร้อน / เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿50.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 4 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/mocha.png"
+                class="card-img-top mx-auto"
+                alt="mocha"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Mocha</h5>
+                <p class="card-text small text-muted">
+                  ผสมกาแฟเข้มกับช็อกโกแลตหอมละมุน<br />
+                  รสหวานนุ่มกลมกล่อมในทุกจิบ<br />
+                  เสิร์ฟ: เย็น / ปั่น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿65.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 5 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/VanillaLatte.png"
+                class="card-img-top mx-auto"
+                alt="VanillaLatte"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Vanilla Latte</h5>
+                <p class="card-text small text-muted">
+                  หอมกลิ่นวานิลลาอ่อน ๆ ผสมเอสเพรสโซ่และนมสดเนียนนุ่ม<br />
+                  ให้รสหวานละมุนหอมกลิ่นคาเฟ่<br />
+                  เสิร์ฟ: เย็น / ปั่น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿70.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 6 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/hm.png"
+                class="card-img-top mx-auto"
+                alt="hazelnut macchiato"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Hazelnut Macchiato</h5>
+                <p class="card-text small text-muted">
+                  หอมถั่วฮาเซลนัทและกาแฟเข้มข้น<br />
+                  รสหวานมันลงตัว กลิ่นหอมติดปลายจมูก<br />
+                  เสิร์ฟ: เย็น / ปั่น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿70.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 7 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/caramel.png"
+                class="card-img-top mx-auto"
+                alt="Caramel Frappuccino"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Caramel Frappuccino</h5>
+                <p class="card-text small text-muted">
+                  กาแฟปั่นหอมคาราเมล ท็อปด้วยวิปครีมเนียนนุ่ม<br />
+                  สดชื่นหวานมันในแก้วเดียว<br />
+                  เสิร์ฟ: ปั่น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿75.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 8 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/bse.png"
+                class="card-img-top mx-auto"
+                alt="Brown Sugar Espresso"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Brown Sugar Espresso</h5>
+                <p class="card-text small text-muted">
+                  เอสเพรสโซ่เข้มผสมไซรัปน้ำตาลทรายแดง<br />
+                  หอมหวานกลมกล่อม ละมุนทุกคำจิบ<br />
+                  เสิร์ฟ: เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿65.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tea Menu Section -->
+      <div id="tea" class="container my-5">
+        <div class="text-center mb-4">
+          <hr class="mx-auto" style="width: 80px; border: 2px solid #ad8b73" />
+          <h2 class="fw-bold text-brown">ชา</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <!-- 🔸 Card 1 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/ThaiMilkTea.png"
+                class="card-img-top mx-auto"
+                alt="Thai Milk Tea"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Thai Milk Tea</h5>
+                <p class="card-text small text-muted">
+                  ชานมไทยหอมเข้มข้น สีส้มสดใส<br />
+                  หวานละมุนตามแบบฉบับไทย<br />
+                  เสิร์ฟ: ร้อน / เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿55.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 2 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/matcha.png"
+                class="card-img-top mx-auto"
+                alt="Matcha Milkshake"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Matcha Milkshake</h5>
+                <p class="card-text small text-muted">
+                  ชาเขียวมัทฉะพรีเมียมปั่นกับนมสด<br />
+                  หอมกลิ่นชาแท้จากญี่ปุ่น<br />
+                  เสิร์ฟ: เย็น / ปั่น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿65.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 3 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/PeachIcedTea.png"
+                class="card-img-top mx-auto"
+                alt="Peach Iced Tea"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Peach Iced Tea</h5>
+                <p class="card-text small text-muted">
+                  ชาพีชหอมหวานสดชื่น<br />
+                  ให้กลิ่นผลไม้ละมุนละไม ดื่มง่าย<br />
+                  เสิร์ฟ: เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿60.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 4 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/EGrey-Milk-Tea.png"
+                class="card-img-top mx-auto"
+                alt="Earl Grey Milk Tea"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Earl Grey Milk Tea</h5>
+                <p class="card-text small text-muted">
+                  ชาเอิร์ลเกรย์หอมกลิ่นเบอร์กาม็อต<br />
+                  ผสมกับนมสดละมุนพอดี<br />
+                  เสิร์ฟ: เย็น / ร้อน
+                </p>
+                <p class="fw-bold text-brown mb-2">฿70.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 5 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/OolongMilkTea.png"
+                class="card-img-top mx-auto"
+                alt="Oolong Milk Tea"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Oolong Milk Tea</h5>
+                <p class="card-text small text-muted">
+                  ชาอู่หลงรสเข้ม หอมกลิ่นชาแท้<br />
+                  เข้ากับนมสดหวานมันลงตัว<br />
+                  เสิร์ฟ: เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿65.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 6 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/StrawberryTea.png"
+                class="card-img-top mx-auto"
+                alt="Strawberry Tea"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Strawberry Tea</h5>
+                <p class="card-text small text-muted">
+                  ชาผลไม้หอมกลิ่นสตรอเบอร์รี่<br />
+                  รสหวานอมเปรี้ยว สดชื่นเบา ๆ<br />
+                  เสิร์ฟ: เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿60.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 7 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/CherryBlossomTea.png"
+                class="card-img-top mx-auto"
+                alt="Cherry Blossom Tea"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Cherry Blossom Tea</h5>
+                <p class="card-text small text-muted">
+                  ชากลิ่นซากุระหอมอ่อน ๆ<br />
+                  ให้ความรู้สึกผ่อนคลาย หรูหราในทุกจิบ<br />
+                  เสิร์ฟ: เย็น / ร้อน
+                </p>
+                <p class="fw-bold text-brown mb-2">฿70.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 8 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/Jasmine-Green-Tea.png"
+                class="card-img-top mx-auto"
+                alt="Jasmine Green Tea"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Jasmine Green Tea</h5>
+                <p class="card-text small text-muted">
+                  ชาเขียวหอมกลิ่นมะลิอ่อน สดชื่นละมุน<br />
+                  เหมาะสำหรับวันสบาย ๆ<br />
+                  เสิร์ฟ: ร้อน / เย็น
+                </p>
+                <p class="fw-bold text-brown mb-2">฿55.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bakery Menu Section -->
+      <div id="bakery" class="container my-5">
+        <div class="text-center mb-4">
+          <hr class="mx-auto" style="width: 80px; border: 2px solid #ad8b73" />
+          <h2 class="fw-bold text-brown">เบเกอรี่</h2>
+        </div>
+
+        <div class="row justify-content-center">
+          <!-- 🔸 Card 1 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/banana-bread.png"
+                class="card-img-top mx-auto"
+                alt="Banana Bread"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Banana Bread</h5>
+                <p class="card-text small text-muted">
+                  ขนมปังกล้วยหอมอบใหม่ หอมกลิ่นกล้วยและเนย<br />
+                  เนื้อนุ่มหอมหวานกำลังดี
+                </p>
+                <p class="fw-bold text-brown mb-2">฿50.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 2 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/blueberry-bagel.png"
+                class="card-img-top mx-auto"
+                alt="Blueberry Bagel"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Blueberry Bagel</h5>
+                <p class="card-text small text-muted">
+                  เบเกิลโฮมเมดเนื้อนุ่มแน่น<br />
+                  ผสมบลูเบอร์รี่รสเปรี้ยวอมหวาน
+                </p>
+                <p class="fw-bold text-brown mb-2">฿60.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 3 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/croissant-butter.png"
+                class="card-img-top mx-auto"
+                alt="Butter Croissant"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Butter Croissant</h5>
+                <p class="card-text small text-muted">
+                  ครัวซองต์เนยสดอบใหม่ หอมกรุ่น<br />
+                  กรอบนอกนุ่มใน เนยละลายในปาก
+                </p>
+                <p class="fw-bold text-brown mb-2">฿55.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 4 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/cheese-bacon-danish.png"
+                class="card-img-top mx-auto"
+                alt="Cheese & Bacon Danish"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Cheese & Bacon Danish</h5>
+                <p class="card-text small text-muted">
+                  เดนิชอบชีสและเบคอน<br />
+                  เข้มข้น มันเค็มพอดีคำ
+                </p>
+                <p class="fw-bold text-brown mb-2">฿70.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 5 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/blueberry-muffin.png"
+                class="card-img-top mx-auto"
+                alt="Blueberry Crumble Muffin"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Blueberry Crumble Muffin</h5>
+                <p class="card-text small text-muted">
+                  มัฟฟินบลูเบอร์รี่เนื้อนุ่ม<br />
+                  โรยครัมเบิลกรอบด้านบน หอมเนยสด
+                </p>
+                <p class="fw-bold text-brown mb-2">฿65.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 🔸 Card 6 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div
+              class="card border-0 shadow-sm text-center p-3"
+              style="background-color: #fffbe9; border-radius: 12px"
+            >
+              <img
+                src="/img/menu/pumpkin-spice-scroll.png"
+                class="card-img-top mx-auto"
+                alt="Pumpkin Spice Scroll"
+                style="width: 120px"
+              />
+              <div class="card-body">
+                <h5 class="card-title fw-bold">Pumpkin Spice Scroll</h5>
+                <p class="card-text small text-muted">
+                  โรลซินนามอนกลิ่นฟักทองอบหอม<br />
+                  อุ่น ๆ กินคู่กาแฟเข้ากันดีเยี่ยม
+                </p>
+                <p class="fw-bold text-brown mb-2">฿60.00</p>
+                <a href="/basket.html" class="btn btn-brown px-4"
+                  >เพิ่มลงตะกร้า</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Sweet Treats Menu Section -->
+          <div id="dessert" class="container my-5">
+            <div class="text-center mb-4">
+              <hr
+                class="mx-auto"
+                style="width: 80px; border: 2px solid #ad8b73"
+              />
+              <h2 class="fw-bold text-brown">ของหวาน</h2>
+            </div>
+
+            <div class="row justify-content-center">
+              <!-- 🔸 Card 1 -->
+              <div class="col-md-3 col-sm-6 mb-4">
+                <div
+                  class="card border-0 shadow-sm text-center p-3"
+                  style="background-color: #fffbe9; border-radius: 12px"
+                >
+                  <img
+                    src="/img/menu/ghost-cookie.png"
+                    class="card-img-top mx-auto"
+                    alt="Ghost Cookie"
+                    style="width: 120px"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">Ghost Cookie</h5>
+                    <p class="card-text small text-muted">
+                      คุกกี้รูปผีสุดน่ารัก กรอบนอกนุ่มใน<br />
+                      หอมกลิ่นเนยสดและวานิลลา
+                    </p>
+                    <p class="fw-bold text-brown mb-2">฿40.00</p>
+                    <a href="/basket.html" class="btn btn-brown px-4"
+                      >เพิ่มลงตะกร้า</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- 🔸 Card 2 -->
+              <div class="col-md-3 col-sm-6 mb-4">
+                <div
+                  class="card border-0 shadow-sm text-center p-3"
+                  style="background-color: #fffbe9; border-radius: 12px"
+                >
+                  <img
+                    src="/img/menu/macarons.png"
+                    class="card-img-top mx-auto"
+                    alt="Macarons"
+                    style="width: 120px"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">Macarons</h5>
+                    <p class="card-text small text-muted">
+                      มาการองหลากสี กรอบนอกนุ่มใน<br />
+                      ไส้ครีมหอมหวานละมุน ละลายในปาก
+                    </p>
+                    <p class="fw-bold text-brown mb-2">฿70.00</p>
+                    <a href="/basket.html" class="btn btn-brown px-4"
+                      >เพิ่มลงตะกร้า</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- 🔸 Card 3 -->
+              <div class="col-md-3 col-sm-6 mb-4">
+                <div
+                  class="card border-0 shadow-sm text-center p-3"
+                  style="background-color: #fffbe9; border-radius: 12px"
+                >
+                  <img
+                    src="/img/menu/Caramel-Iced-Donut.png"
+                    class="card-img-top mx-auto"
+                    alt="Caramel Iced Donut"
+                    style="width: 120px"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">Caramel Iced Donut</h5>
+                    <p class="card-text small text-muted">
+                      โดนัทเคลือบคาราเมล รสหวานมัน<br />
+                      หอมกลิ่นน้ำตาลไหม้อ่อน ๆ
+                    </p>
+                    <p class="fw-bold text-brown mb-2">฿55.00</p>
+                    <a href="/basket.html" class="btn btn-brown px-4"
+                      >เพิ่มลงตะกร้า</a
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- 🔸 Card 4 -->
+              <div class="col-md-3 col-sm-6 mb-4">
+                <div
+                  class="card border-0 shadow-sm text-center p-3"
+                  style="background-color: #fffbe9; border-radius: 12px"
+                >
+                  <img
+                    src="/img/menu/breakfast-bar.png"
+                    class="card-img-top mx-auto"
+                    alt="Breakfast Bar"
+                    style="width: 120px"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title fw-bold">Breakfast Bar</h5>
+                    <p class="card-text small text-muted">
+                      บาร์ธัญพืชโฮมเมด เต็มไปด้วยโอ๊ต ถั่ว และน้ำผึ้ง<br />
+                      ให้พลังงานและอร่อยอย่างมีสุขภาพ
+                    </p>
+                    <p class="fw-bold text-brown mb-2">฿50.00</p>
+                    <a href="/basket.html" class="btn btn-brown px-4"
+                      >เพิ่มลงตะกร้า</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer_container">
+        <div class="footer_section">
+          <img src="img/tinycup_logo.png" alt="Coffee Cup" class="logo" />
+        </div>
+
+        <div class="footer_right">
+          <div class="footer_section">
+            <ul>
+              <li><a href="index.html">หน้าแรก</a></li>
+              <li><a href="menu.html">เมนู</a></li>
+              <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            </ul>
+          </div>
+
+          <div class="footer_section">
+            <ul>
+              <li><a href="index.html">แกลเลอรี่</a></li>
+              <li><a href="menu.html">Blog</a></li>
+              <li><a href="about.html">คำถามที่พบบ่อย</a></li>
+            </ul>
+          </div>
+
+          <div class="footer_section">
+            <div class="social">
+              <h3>ติดต่อเรา</h3>
+              <a href="#"><img src="img/facebook.png" alt="facebook" /></a>
+              <a href="#"><img src="img/ig.png" alt="instagram" /></a>
+              <a href="#"><img src="img/line.png" alt="line" /></a>
+              <a href="#"><img src="img/tiktok.png" alt="tiktok" /></a>
+              <br /><br />
+              <img src="/img/telephone-symbol-button.png" alt="tel" />
+              123-456-789
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <p>&copy; 2025 Tiny Cup. All rights reserved.</p>
+        <p>IT Group11</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        // 1. โค้ดเดิมสำหรับเปิด-ปิดเมนูหลัก (ทำงานได้ดีอยู่แล้ว)
+        toggle.addEventListener("click", () => {
+          nav.classList.toggle("active");
+          toggle.textContent = nav.classList.contains("active") ? "✖" : "☰";
+        });
+
+        // 2. *** เพิ่มโค้ดใหม่สำหรับจัดการเมนูย่อย ***
+        const menuItemsWithSubmenu = document.querySelectorAll(
+          "nav li.first, nav li.second"
+        );
+
+        menuItemsWithSubmenu.forEach((item) => {
+          // เลือกเฉพาะแท็ก <a> ที่เป็นลูกตรงๆ ของ li
+          const link = item.querySelector(":scope > a");
+
+          link.addEventListener("click", function (event) {
+            // ตรวจสอบว่าหน้าจอเป็นขนาดมือถือหรือไม่
+            if (window.innerWidth <= 480) {
+              // ป้องกันไม่ให้ลิงก์ทำงาน (ไม่ให้เปลี่ยนหน้า)
+              event.preventDefault();
+
+              // ค้นหาเมนูย่อยที่อยู่ภายใน li ที่ถูกคลิก
+              const submenu = item.querySelector(".drop, .down");
+
+              if (submenu) {
+                // สลับคลาสเพื่อแสดง/ซ่อนเมนูย่อย
+                submenu.classList.toggle("submenu-active");
+                // สลับคลาสที่ลิงก์เพื่อหมุนลูกศร (ถ้ามีใน CSS)
+                link.classList.toggle("submenu-open");
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

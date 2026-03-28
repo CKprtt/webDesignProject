@@ -1,0 +1,169 @@
+@import url('nav.css');
+@import url('footer.css');
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.menu-header .breadcumb a {
+  text-decoration: none;
+  color: #6d6d6d;
+}
+
+.menu-header .breadcumb a:hover {
+  color: #ad8b73;
+  text-decoration: underline;
+}
+
+.head {
+  max-width: 900px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.head .h1 {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #3e2723;
+  margin-bottom: 10px;
+}
+
+.head p {
+  font-size: 1.1em;
+  color: #4e342e;
+  margin-bottom: 30px;
+}
+
+.content {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
+}
+
+.content .div1,
+.content .div2 {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0ebe2;
+}
+
+.div1 h2,
+.div2 h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #3e2723;
+  margin-bottom: 20px;
+}
+
+.div1 p {
+  font-size: 1.1em;
+  color: #4e342e;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.div1 p strong {
+  font-weight: 600;
+}
+
+.div2 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.div2 label {
+  font-size: 1em;
+  font-weight: 500;
+  color: #4e342e;
+  margin-bottom: 5px;
+}
+
+.div2 .text,
+.div2 .textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-bottom: 15px;
+  transition: all 0.2s;
+}
+
+.div2 .textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.div2 .text:focus,
+.div2 .textarea:focus {
+  outline: none;
+  border-color: #ad8b73;
+  box-shadow: 0 0 0 3px rgba(173, 139, 115, 0.2);
+}
+
+.div2 .btn {
+  align-self: flex-start;
+  width: 150px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #ad8b73;
+  color: white;
+  font-size: 1.1em;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.div2 .btn:hover {
+  background-color: #8c715e;
+}
+
+.map {
+  margin-top: 30px;
+}
+
+.map h2 {
+  font-size: 1.4em;
+  color: #3e2723;
+  margin-bottom: 10px;
+}
+
+.map-container {
+  border: 3px solid #ad8b73;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .menu-header {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .head {
+    margin-top: 20px;
+  }
+
+  .content {
+    flex-direction: column;
+    padding: 0 15px 40px 15px;
+  }
+
+  .map iframe {
+    height: 280px;
+  }
+}

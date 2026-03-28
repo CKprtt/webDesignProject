@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap");
+@import url('nav.css');
+@import url('footer.css');
+
+* {
+  font-family: "Kanit", sans-serif;
+  box-sizing: border-box;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+}
+.menu-header .breadcumb a {
+  text-decoration: none;
+  color: #6d6d6d;
+}
+.menu-header .breadcumb a:hover {
+  color: #ad8b73;
+  text-decoration: underline;
+}
+
+.find {
+  position: relative;
+  width: 250px;
+}
+.find input[type="search"] {
+  width: 100%;
+  padding: 8px 35px 8px 10px;
+  border: none;
+  border-bottom: 2px solid #6d6d6d;
+  background: transparent;
+  font-size: 1em;
+  color: #5c5c5c;
+  outline: none;
+}
+.find input::placeholder {
+  color: #9e9e9e;
+  font-weight: 500;
+}
+.find .icon {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.find input:focus {
+  border-color: #ad8b73;
+  transition: 0.3s;
+}
+
+.head {
+  text-align: center;
+  margin-top: 20px;
+}
+.head h1 {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #3e2723;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 100%;
+}
+.container .menu {
+  margin-top: 40px;
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  text-align: center;
+}
+.container .menu div {
+  font-weight: 600;
+  color: #3e2723;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.container .menu div:hover {
+  color: #ad8b73;
+}
+
+.container .content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 80px;
+  justify-content: center;
+  text-align: left;
+  margin-top: 80px;
+}
+.container .content div {
+  max-width: 500px;
+  font-size: 1.1em;
+  color: #4e342e;
+  line-height: 1.6;
+}
+.container .content hr {
+  margin-top: 15px;
+  border: none;
+  border-top: 1px solid #e0d9cf;
+}
+
+@media (max-width: 768px) {
+  .menu-header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+  .find {
+    width: 80%;
+  }
+  .head h1 {
+    font-size: 1.6em;
+  }
+  .container .menu {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container .content {
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  .container .content div {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiny Cup | ให้คะแนน</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style/review.css" />
+    <link
+      rel="shortcut icon"
+      href="img/tinycup_icon1.png"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="img/tinycup_logo.png" alt="tinycupLogo" />
+        </a>
+      </div>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <nav id="nav">
+        <ul>
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li class="first">
+            <a href="menu.html">เมนู</a>
+            <ul class="drop">
+              <li><a href="/menu.html#coffee">กาแฟ</a></li>
+              <li><a href="/menu.html#tea">ชา</a></li>
+              <li class="second">
+                <a href="#">ของทานเล่น</a>
+                <ul class="down">
+                  <li><a href="/menu.html#bakery">เบเกอรี่</a></li>
+                  <li><a href="/menu.html#dessert">ของหวาน</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="about.html" target="">เกี่ยวกับเรา</a></li>
+          <li><a href="contact.html" target="">ติดต่อเรา</a></li>
+          <li>
+            <a href="basket.html"
+              ><img src="img/basket-2.png" alt="ตะกร้า"
+            /></a>
+          </li>
+          <li>
+            <a href="favorite.html"
+              ><img src="img/heart.png" alt="รายการโปรด"
+            /></a>
+          </li>
+          <li>
+            <a href="account.html"
+              ><img src="img/account-2.png" alt="โปรไฟล์"
+            /></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="main">
+      <div class="menu-header">
+        <div class="breadcumb">
+          <a href="index.html">หน้าแรก</a> /
+          <a href="order_history.html">ประวัติการซื้อ</a> /
+          <a href="review.html">ให้คะแนน</a>
+        </div>
+        <div class="find">
+          <input type="search" placeholder="ค้นหา" />
+          <img src="img/search-2.png" alt="search" class="icon" />
+        </div>
+      </div>
+
+      <div class="head">
+        <h1>การให้คะแนน</h1>
+      </div>
+
+      <div class="container">
+        <div class="product">
+          <img src="images/Americano.png" alt="Americano" />
+          <div class="details">
+            <p class="p1">Americano</p>
+            <p class="p2">x1</p>
+          </div>
+          <p class="price">฿50.00</p>
+        </div>
+
+        <div class="rating">
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+
+        <div class="btn1">
+          <div><i class="fa-solid fa-camera"></i> เพิ่มรูปภาพ</div>
+          <div><i class="fa-solid fa-video"></i> เพิ่มวิดีโอ</div>
+        </div>
+
+        <form action="" class="review">
+          <textarea
+            placeholder="สินค้าตรงปกดีมากค่ะ กาแฟหอม รสชาติเข้มข้น จัดส่งรวดเร็ว..."
+          ></textarea>
+          <button type="submit" class="btn2">ส่งรีวิว</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer_container">
+        <div class="footer_section">
+          <img src="img/tinycup_logo.png" alt="Coffee Cup" class="logo" />
+        </div>
+        <div class="footer_right">
+          <div class="footer_section">
+            <ul>
+              <li><a href="index.html">หน้าแรก</a></li>
+              <li><a href="menu.html">เมนู</a></li>
+              <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            </ul>
+          </div>
+          <div class="footer_section">
+            <ul>
+              <li><a href="gallery.html">แกลเลอรี่</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="FAQ.html">คำถามที่พบบ่อย</a></li>
+            </ul>
+          </div>
+          <div class="footer_section">
+            <div class="social">
+              <h3>ติดต่อเรา</h3>
+              <a href="#"><img src="img/facebook.png" alt="facebook" /></a>
+              <a href="#"><img src="img/ig.png" alt="instagram" /></a>
+              <a href="#"><img src="img/line.png" alt="line" /></a>
+              <a href="#"><img src="img/tiktok.png" alt="tiktok" /></a>
+              <br /><br />
+              <img src="img/telephone-symbol-button.png" alt="tel" />
+              123-456-789
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <p>&copy; 2025 Tiny Cup. All rights reserved.</p>
+        <p>IT Group11</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            toggle.textContent = nav.classList.contains("active") ? "✖" : "☰";
+          });
+        }
+        const menuItemsWithSubmenu = document.querySelectorAll(
+          "nav li.first, nav li.second"
+        );
+        const stars = document.querySelectorAll(".rating .fa-star");
+        stars.forEach((star, index1) => {
+          star.addEventListener("click", () => {
+            stars.forEach((star, index2) => {
+              if (index1 >= index2) {
+                star.classList.add("fa-solid");
+                star.classList.remove("fa-regular");
+              } else {
+                star.classList.add("fa-regular");
+                star.classList.remove("fa-solid");
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

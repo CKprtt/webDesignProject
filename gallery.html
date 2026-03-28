@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiny Cup | แกลเลอรี่</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style/gallery.css" />
+    <link
+      rel="shortcut icon"
+      href="img/tinycup_icon1.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="img/tinycup_logo.png" alt="tinycupLogo" />
+        </a>
+      </div>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <nav id="nav">
+        <ul>
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li class="first">
+            <a href="menu.html">เมนู</a>
+            <ul class="drop">
+              <li><a href="/menu.html#coffee">กาแฟ</a></li>
+              <li><a href="/menu.html#tea">ชา</a></li>
+              <li class="second">
+                <a href="#">ของทานเล่น</a>
+                <ul class="down">
+                  <li><a href="/menu.html#bakery">เบเกอรี่</a></li>
+                  <li><a href="/menu.html#dessert">ของหวาน</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="about.html" target="">เกี่ยวกับเรา</a></li>
+          <li><a href="contact.html" target="">ติดต่อเรา</a></li>
+          <li>
+            <a href="basket.html"
+              ><img src="img/basket-2.png" alt="ตะกร้า"
+            /></a>
+          </li>
+          <li>
+            <a href="favorite.html"
+              ><img src="img/heart.png" alt="รายการโปรด"
+            /></a>
+          </li>
+          <li>
+            <a href="account.html"
+              ><img src="img/account-2.png" alt="โปรไฟล์"
+            /></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="main">
+      <div class="menu-header">
+        <div class="breadcumb">
+          <a href="index.html">หน้าแรก</a> /
+          <a href="gallery.html">แกลเลอรี่</a>
+        </div>
+      </div>
+
+      <div class="head">
+        <h1>แกลเลอรี่</h1>
+        <hr />
+      </div>
+
+      <div class="content">
+        <img src="images/g1.png" alt="ภาพบรรยากาศร้านกาแฟ" />
+        <img src="images/g2.png" alt="ภาพกาแฟลาเต้" />
+        <img src="images/g3.png" alt="ภาพเค้กและเครื่องดื่ม" />
+        <img src="images/g4.png" alt="ภาพบาริสต้ากำลังทำกาแฟ" />
+        <img src="images/g5.png" alt="ภาพเครื่องดื่มหลากหลาย" />
+        <img src="images/g6.png" alt="ภาพมุมนั่งในร้าน" />
+        <img src="images/g7.png" alt="ภาพกาแฟและขนม" />
+        <img src="images/g8.png" alt="ภาพแก้วกาแฟสวยๆ" />
+        <img src="images/g9.png" alt="ภาพหน้าร้านกาแฟ" />
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer_container">
+        <div class="footer_section">
+          <img src="img/tinycup_logo.png" alt="Coffee Cup" class="logo" />
+        </div>
+        <div class="footer_right">
+          <div class="footer_section">
+            <ul>
+              <li><a href="index.html">หน้าแรก</a></li>
+              <li><a href="menu.html">เมนู</a></li>
+              <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            </ul>
+          </div>
+          <div class="footer_section">
+            <ul>
+              <li><a href="gallery.html">แกลเลอรี่</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="FAQ.html">คำถามที่พบบ่อย</a></li>
+            </ul>
+          </div>
+          <div class="footer_section">
+            <div class="social">
+              <h3>ติดต่อเรา</h3>
+              <a href="#"><img src="img/facebook.png" alt="facebook" /></a>
+              <a href="#"><img src="img/ig.png" alt="instagram" /></a>
+              <a href="#"><img src="img/line.png" alt="line" /></a>
+              <a href="#"><img src="img/tiktok.png" alt="tiktok" /></a>
+              <br /><br />
+              <img src="img/telephone-symbol-button.png" alt="tel" />
+              123-456-789
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <p>&copy; 2025 Tiny Cup. All rights reserved.</p>
+        <p>IT Group11</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+        toggle.addEventListener("click", () => {
+          nav.classList.toggle("active");
+          toggle.textContent = nav.classList.contains("active") ? "✖" : "☰";
+        });
+        const menuItemsWithSubmenu = document.querySelectorAll(
+          "nav li.first, nav li.second"
+        );
+        menuItemsWithSubmenu.forEach((item) => {
+          const link = item.querySelector(":scope > a");
+          link.addEventListener("click", function (event) {
+            if (window.innerWidth <= 480) {
+              event.preventDefault();
+              const submenu = item.querySelector(".drop, .down");
+              if (submenu) {
+                submenu.classList.toggle("submenu-active");
+                link.classList.toggle("submenu-open");
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

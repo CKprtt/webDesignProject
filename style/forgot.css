@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap");
+
+* {
+  font-family: "Kanit", sans-serif;
+}
+
+body {
+  background-color: #ad8b73;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  width: 30%;
+  height: 70%;
+  background-color: white;
+  display: block;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 20px;
+}
+
+.box img {
+  width: 5%;
+  margin: 15px;
+}
+
+.box p {
+  font-size: 2em;
+  padding: 5%;
+  text-align: center;
+}
+
+.box label {
+  font-size: 1em;
+  margin: 15px 0 5px 0;
+  align-self: flex-start;
+}
+
+.box form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+button a {
+  text-decoration: none;
+  font-weight: bolder;
+  color: white;
+}
+
+button {
+  width: 30%;
+  align-self: flex-start;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5%;
+  padding: 10px;
+  background-color: #ad8b73;
+}
+
+@media (max-width: 480px) {
+  .box {
+    /* ทำให้กล่องกว้างขึ้นเกือบเต็มจอ */
+    width: 90%;
+    height: 90%; /* ปรับความสูงอัตโนมัติ */
+    padding: 20px;
+  }
+
+  .box p {
+    font-size: 1.8em; /* ลดขนาดตัวอักษรหัวข้อ */
+  }
+  
+  .box img {
+      width: 25px; /* กำหนดขนาดไอคอนย้อนกลับเป็น pixel */
+  }
+
+  /* ปรับปุ่มให้กว้างขึ้น */
+  .button-link {
+    width: 50%;
+  }
+}

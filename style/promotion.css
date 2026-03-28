@@ -1,0 +1,111 @@
+@import url('nav.css');
+@import url('footer.css');
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+}
+.menu-header .breadcumb a {
+  text-decoration: none;
+  color: #6d6d6d;
+}
+.menu-header .breadcumb a:hover {
+  color: #ad8b73;
+  text-decoration: underline;
+}
+.find {
+  position: relative;
+  width: 220px;
+}
+.find input[type="search"] {
+  width: 100%;
+  padding: 8px 35px 8px 10px;
+  border: none;
+  border-bottom: 2px solid #6d6d6d;
+  background: transparent;
+  font-size: 1em;
+  color: #5c5c5c;
+  outline: none;
+}
+.find input::placeholder {
+  color: #9e9e9e;
+}
+.find .icon {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+}
+.find input:focus {
+  border-color: #ad8b73;
+}
+.promotion-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+}
+.promotion-container h3 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #3e2723;
+    margin-bottom: 40px;
+}
+.coupon-section {
+    margin-bottom: 50px;
+}
+.coupon-section h2 {
+    text-align: center;
+    background-color: #AD8B73;
+    color: white;
+    margin: 0 0 30px 0;
+    padding: 15px;
+    font-size: 1.5em;
+    border-radius: 8px;
+}
+.coupon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.coupon-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+.coupon-item img:hover {
+    transform: translateY(-5px);
+}
+@media (max-width: 480px) {
+    .menu-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    .find {
+        width: 100%;
+    }
+    .promotion-container {
+        padding: 20px 15px 40px 15px;
+    }
+    .promotion-container h3 {
+        font-size: 1.6em;
+        text-align: center;
+    }
+    .coupon-section h2 {
+        font-size: 1.3em;
+    }
+    .coupon-grid {
+        gap: 20px;
+    }
+    .coupon-item {
+        width: 100%;
+    }
+}

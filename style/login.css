@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap');
+
+* {
+  font-family: 'Kanit', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+.left, .right {
+    width: 50%;
+    padding: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.left p {
+    font-size: 2em;
+    padding: 5%;
+    text-align: center;
+}
+
+.left label {
+    font-size: 1em;
+    margin: 15px 0 5px 0;
+    align-self: flex-start;
+}
+
+.left form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.left input {
+    margin-bottom: 10px;
+}
+
+.left a {
+    color: #00A6FF;
+    text-decoration: none;
+    align-self: flex-end;
+}
+
+.left a:hover {
+    text-decoration: underline;
+}
+
+.left button {
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5%;
+    padding: 10px;
+    background-color: #AD8B73;
+}
+
+.left button a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.line {
+    margin: 25px 0;
+    width: 100%;
+    border-bottom: 1px solid #262626;
+}
+
+.otherlogin {
+    text-align: center;
+}
+
+.otherlogin p {
+    font-size: 1em;
+}
+
+img {
+    width: 7%;
+    margin: 10px;
+}
+
+.right {
+    color: white;
+    background-color: #AD8B73;
+}
+
+.right img {
+    width: 200px;
+}
+
+.right a {
+    font-size: 1.4em;
+    color: white;
+    text-decoration: none;
+}
+
+.right a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  body {
+    /* เปลี่ยน layout หลักเป็นแนวตั้ง */
+    flex-direction: column;
+    height: auto; /* ปรับความสูงอัตโนมัติ */
+  }
+
+  /* ทำให้แต่ละฝั่งกว้างเต็มจอ */
+  .left, .right {
+    width: 100%;
+    min-height: 50vh; /* กำหนดความสูงขั้นต่ำให้แต่ละฝั่ง */
+    padding: 10% 8%; /* ลดระยะห่างด้านข้าง */
+  }
+  
+  .left p {
+      font-size: 1.8em;
+      padding: 5% 0;
+  }
+
+  .left form {
+      width: 100%; /* ทำให้ฟอร์มกว้างเต็ม */
+  }
+
+  /* ปรับขนาดโลโก้ในฝั่งขวา */
+  .right img {
+    width: 150px;
+  }
+
+  /* ปรับขนาดไอคอน Social Media */
+  .otherlogin img {
+      width: 40px;
+      margin: 8px;
+  }
+}
+

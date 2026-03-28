@@ -1,0 +1,144 @@
+@import url('nav.css');
+@import url('footer.css');
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 60px;
+}
+.menu-header .breadcumb a { text-decoration: none; color: #6d6d6d; }
+.menu-header .breadcumb a:hover { color: #ad8b73; text-decoration: underline; }
+
+.head {
+    max-width: 900px;
+    margin: 20px auto 0 auto;
+    padding: 0 20px;
+}
+.head h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #3e2723;
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px 30px;
+    background-color: #d7c5b6;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.card .profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.card .member-info {
+    flex-grow: 1;
+}
+.card .member-info .name {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #4e342e;
+    margin: 0;
+}
+.card .member-info .level {
+    font-size: 1em;
+    color: #6d5d4f;
+    margin: 0;
+}
+.card .badge {
+    width: 50px;
+    height: auto;
+}
+
+.content {
+    max-width: 900px;
+    margin: 40px auto 60px auto;
+    padding: 0;
+}
+
+.line {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+}
+.line a {
+    text-decoration: none;
+    padding: 10px 25px;
+    font-weight: 600;
+    color: #6d6d6d;
+    position: relative;
+    bottom: -1px;
+    border-bottom: 3px solid transparent;
+}
+.line .span1 {
+    color: #3e2723;
+    border-bottom-color: #ad8b73;
+}
+.line .span2:hover {
+    color: #3e2723;
+}
+
+.history-list {
+    margin-top: 30px;
+}
+.history-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f5f0e8;
+    padding: 20px;
+    margin-bottom: 1px;
+}
+.history-bar p {
+    margin: 0;
+    font-weight: 500;
+    color: #4e342e;
+}
+.point {
+    margin: 0;
+    font-weight: 600;
+    color: #3e2723;
+}
+
+@media (max-width: 480px) {
+    .menu-header {
+        display: none;
+    }
+    .main {
+        padding: 20px;
+    }
+    .head h1 {
+        font-size: 1.6em;
+    }
+    .card {
+        padding: 15px 20px;
+    }
+    .card .profile-pic {
+        width: 50px;
+        height: 50px;
+    }
+    .card .member-info .name {
+        font-size: 1.1em;
+    }
+    .content {
+        margin-top: 30px;
+    }
+    .line a {
+        flex-grow: 1;
+        text-align: center;
+        padding: 10px 5px;
+    }
+    .history-bar {
+        padding: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}

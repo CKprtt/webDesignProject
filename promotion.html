@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="th">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tiny Cup | โปรโมชัน</title>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<script src="js/bootstrap.min.js"></script>
+<link href="style/promotion.css" rel="stylesheet"/>
+<link href="../img/tinycup_icon1.png" rel="shortcut icon" type="image/x-icon"/>
+</head>
+<body>
+<header>
+<div class="logo">
+<a href="index.html">
+<img alt="tinycupLogo" src="../img/tinycup_logo.png"/>
+</a>
+</div>
+<div class="menu-toggle" id="menu-toggle">☰</div>
+<nav id="nav">
+<ul>
+<li><a href="index.html">หน้าแรก</a></li>
+<li class="first">
+<a href="menu.html">เมนู</a>
+<ul class="drop">
+<li><a href="menu.html#coffee">กาแฟ</a></li>
+<li><a href="menu.html#tea">ชา</a></li>
+<li class="second">
+<a href="#">ของทานเล่น</a>
+<ul class="down">
+<li><a href="menu.html#bakery">เบเกอรี่</a></li>
+<li><a href="menu.html#dessert">ของหวาน</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="about.html" target="">เกี่ยวกับเรา</a></li>
+<li><a href="contact.html" target="">ติดต่อเรา</a></li>
+<li>
+<a href="basket.html"><img alt="ตะกร้า" src="../img/basket-2.png"/></a>
+</li>
+<li>
+<a href="favorite.html"><img alt="รายการโปรด" src="../img/heart.png"/></a>
+</li>
+<li>
+<a href="account.html"><img alt="โปรไฟล์" src="../img/account-2.png"/></a>
+</li>
+</ul>
+</nav>
+</header>
+<section class="main">
+<div class="menu-header">
+<div class="breadcumb">
+<a href="index.html">หน้าแรก</a> /
+          <a href="promotion.html">โปรโมชัน</a>
+</div>
+<div class="find">
+<input placeholder="ค้นหา" type="search"/>
+<img alt="search" class="icon" src="../img/search-2.png"/>
+</div>
+</div>
+<div class="promotion-container">
+<h3>โปรโมชัน และ โค้ดส่วนลด</h3>
+<div class="coupon-section">
+<h2>โค้ดส่งฟรี</h2>
+<div class="coupon-grid">
+<div class="coupon-item">
+<img alt="โค้ดส่งฟรี" src="../img/code.png"/>
+</div>
+<div class="coupon-item">
+<img alt="โค้ดส่งฟรี" src="../img/code.png"/>
+</div>
+<div class="coupon-item">
+<img alt="โค้ดส่งฟรี" src="../img/code.png"/>
+</div>
+<div class="coupon-item">
+<img alt="โค้ดส่งฟรี" src="../img/code.png"/>
+</div>
+<div class="coupon-item">
+<img alt="โค้ดส่งฟรี" src="../img/code.png"/>
+</div>
+</div>
+</div>
+<div class="coupon-section">
+<h2>โค้ดส่วนลด</h2>
+<div class="coupon-grid">
+<div class="coupon-item">
+<img alt="โค้ดส่วนลด" src="../img/discount.png"/>
+</div>
+<div class="coupon-item">
+<img alt="โค้ดส่วนลด" src="../img/discount.png"/>
+</div>
+<div class="coupon-item">
+<img alt="โค้ดส่วนลด" src="../img/discount.png"/>
+</div>
+<div class="coupon-item">
+<img alt="โค้ดส่วนลด" src="../img/discount.png"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="footer_container">
+<div class="footer_section">
+<img alt="Coffee Cup" class="logo" src="../img/tinycup_logo.png"/>
+</div>
+<div class="footer_right">
+<div class="footer_section">
+<ul>
+<li><a href="index.html">หน้าแรก</a></li>
+<li><a href="menu.html">เมนู</a></li>
+<li><a href="about.html">เกี่ยวกับเรา</a></li>
+</ul>
+</div>
+<div class="footer_section">
+<ul>
+<li><a href="gallery.html">แกลเลอรี่</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="FAQ.html">คำถามที่พบบ่อย</a></li>
+</ul>
+</div>
+<div class="footer_section">
+<div class="social">
+<h3>ติดต่อเรา</h3>
+<a href="#"><img alt="facebook" src="../img/facebook.png"/></a>
+<a href="#"><img alt="instagram" src="../img/ig.png"/></a>
+<a href="#"><img alt="line" src="../img/line.png"/></a>
+<a href="#"><img alt="tiktok" src="../img/tiktok.png"/></a>
+<br/><br/>
+<img alt="tel" src="../img/telephone-symbol-button.png"/>
+              123-456-789
+            </div>
+</div>
+</div>
+</div>
+<div class="bottom">
+<p>© 2025 Tiny Cup. All rights reserved.</p>
+<p>IT Group11</p>
+</div>
+</footer>
+<script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+        if (toggle && nav) {
+          toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            toggle.textContent = nav.classList.contains("active") ? "✖" : "☰";
+          });
+        }
+        const menuItemsWithSubmenu = document.querySelectorAll(
+          "nav li.first, nav li.second"
+        );
+        menuItemsWithSubmenu.forEach((item) => {
+          const link = item.querySelector(":scope > a");
+          if (link) {
+            link.addEventListener("click", function (event) {
+              if (window.innerWidth <= 480) {
+                event.preventDefault();
+                const submenu = item.querySelector(".drop, .down");
+                if (submenu) {
+                  submenu.classList.toggle("submenu-active");
+                  link.classList.toggle("submenu-open");
+                }
+              }
+            });
+          }
+        });
+      });
+    </script>
+</body>
+</html>

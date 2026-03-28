@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tiny Cup | บัญชีผู้ใช้</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style/profile.css" />
+    <link
+      rel="shortcut icon"
+      href="img/tinycup_icon1.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html">
+          <img src="img/tinycup_logo.png" alt="tinycupLogo" />
+        </a>
+      </div>
+
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+
+      <nav id="nav">
+        <ul>
+          <li><a href="index.html">หน้าแรก</a></li>
+          <li class="first">
+            <a href="menu.html">เมนู</a>
+            <ul class="drop">
+              <li><a href="/menu.html#coffee">กาแฟ</a></li>
+              <li><a href="/menu.html#tea">ชา</a></li>
+              <li class="second">
+                <a href="#">ของทานเล่น</a>
+                <ul class="down">
+                  <li><a href="/menu.html#bakery">เบเกอรี่</a></li>
+                  <li><a href="/menu.html#dessert">ของหวาน</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a href="about.html" target="">เกี่ยวกับเรา</a></li>
+          <li><a href="contact.html" target="">ติดต่อเรา</a></li>
+          <li>
+            <a href="basket.html"
+              ><img src="img/basket-2.png" alt="ตะกร้า"
+            /></a>
+          </li>
+          <li>
+            <a href="favorite.html"
+              ><img src="img/heart.png" alt="รายการโปรด"
+            /></a>
+          </li>
+          <li>
+            <a href="account.html"
+              ><img src="img/account-2.png" alt="โปรไฟล์"
+            /></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <aside class="menu">
+          <div class="profile-summary">
+            <img src="images/profile.png" alt="Profile Picture" />
+            <p class="profile-name">คุณโนฮาระ</p>
+            <p class="profile-phone">093-123-4567</p>
+          </div>
+          <hr />
+          <a href="favorite.html">รายการโปรด</a>
+          <hr />
+          <a href="subscription.html">บัตรสมาชิก</a>
+          <hr />
+          <a href="promotion.html">โปรโมชัน</a>
+          <hr />
+          <a href="order_history.html">ประวัติการซื้อ</a>
+          <hr />
+          <a href="status.html">สถานะคำสั่งซื้อ</a>
+          <hr />
+          <a href="login.html" class="logout">ออกจากระบบ</a>
+        </aside>
+
+        <div class="content">
+          <div class="account">
+            <h1>บัญชีผู้ใช้</h1>
+            <img src="images/profile.png" alt="Profile Picture" />
+            <div class="upload">อัพโหลดรูปภาพ</div>
+          </div>
+
+          <div class="form">
+            <form action="#">
+              <label for="username">ชื่อผู้ใช้:</label>
+              <input type="text" id="username" class="text" value="shinchan" />
+
+              <label for="fullname">ชื่อ-นามสกุล:</label>
+              <input
+                type="text"
+                id="fullname"
+                class="text"
+                value="โนฮาระ ชิโนะสุเกะ"
+              />
+
+              <label for="email">อีเมล:</label>
+              <input
+                type="email"
+                id="email"
+                class="text"
+                value="nohara@email.com"
+              />
+
+              <label for="phone">เบอร์โทรศัพท์:</label>
+              <input type="tel" id="phone" class="text" value="093-123-4567" />
+
+              <input type="submit" class="submit" value="บันทึก" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer_container">
+        <div class="footer_section">
+          <img src="img/tinycup_logo.png" alt="Coffee Cup" class="logo" />
+        </div>
+        <div class="footer_right">
+          <div class="footer_section">
+            <ul>
+              <li><a href="index.html">หน้าแรก</a></li>
+              <li><a href="menu.html">เมนู</a></li>
+              <li><a href="about.html">เกี่ยวกับเรา</a></li>
+            </ul>
+          </div>
+          <div class="footer_section">
+            <ul>
+              <li><a href="gallery.html">แกลเลอรี่</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="FAQ.html">คำถามที่พบบ่อย</a></li>
+            </ul>
+          </div>
+          <div class="footer_section">
+            <div class="social">
+              <h3>ติดต่อเรา</h3>
+              <a href="#"><img src="img/facebook.png" alt="facebook" /></a>
+              <a href="#"><img src="img/ig.png" alt="instagram" /></a>
+              <a href="#"><img src="img/line.png" alt="line" /></a>
+              <a href="#"><img src="img/tiktok.png" alt="tiktok" /></a>
+              <br /><br />
+              <img src="img/telephone-symbol-button.png" alt="tel" />
+              123-456-789
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <p>&copy; 2025 Tiny Cup. All rights reserved.</p>
+        <p>IT Group11</p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("menu-toggle");
+        const nav = document.getElementById("nav");
+
+        toggle.addEventListener("click", () => {
+          nav.classList.toggle("active");
+          toggle.textContent = nav.classList.contains("active") ? "✖" : "☰";
+        });
+
+        const menuItemsWithSubmenu = document.querySelectorAll(
+          "nav li.first, nav li.second"
+        );
+
+        menuItemsWithSubmenu.forEach((item) => {
+          const link = item.querySelector(":scope > a");
+
+          link.addEventListener("click", function (event) {
+            if (window.innerWidth <= 480) {
+              event.preventDefault();
+              const submenu = item.querySelector(".drop, .down");
+              if (submenu) {
+                submenu.classList.toggle("submenu-active");
+                link.classList.toggle("submenu-open");
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
